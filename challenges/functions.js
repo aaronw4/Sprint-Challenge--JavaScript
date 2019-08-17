@@ -39,6 +39,11 @@ console.log(consume("Mary","Poppins", greeting)); // Hello Mary Poppins, nice to
 
 // Explanation: 
 
+// The scope of the function 'nestedFunction' includes every variable present within itself, 
+// within each of its parent functions, and anything global.
+// Since the variable 'internal' is inside a parent function of 'nestedFunction',
+// 'nestedFunction' has access to it.
+
 
 const external = "I'm outside the function";
 
