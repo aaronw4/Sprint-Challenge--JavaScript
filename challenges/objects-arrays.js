@@ -67,11 +67,13 @@ const graduates = [{"id":1,"first_name":"Cynde","university":"Missouri Southern 
 {"id":9,"first_name":"Michail","university":"Universidad Católica de Ávila","email":"mrome8@shinystat.com"},
 {"id":10,"first_name":"Hube","university":"Universitat Rovira I Virgili Tarragona","email":"hlethbrig9@foxnews.com"}]
 
-/* Request 1: Create a new array called universities that contains all the universities in the graduates array.  
+/* Request 1: Create a new array called universities that contains all the universities in the graduates array.
 
 Once you have the new array created, sort the universities alphabetically and log the result. */
-const universities = [];
-console.log(universities)
+//const universities = [];
+let universities = graduates.map(i => i.university);
+universities = universities.sort();
+console.log(universities);
 
 /* Request 2: Create a new array called contactInfo that contains both first name and email of each student. 
 
@@ -79,12 +81,14 @@ The resulting contact information should have a space between the first name and
 Name email@example.com
 
 Log the result of your new array. */
-const contactInfo = [];
+//const contactInfo = [];
+let contactInfo = graduates.map(i => i.first_name + " " + i.email);
 console.log(contactInfo);
 
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called uni that contains them all. Log the result. */
-const uni = [];
+//const uni = [];
+let uni = universities.filter(i => i.indexOf('Uni') !== -1);
 console.log(uni);
 
 
@@ -106,19 +110,24 @@ zooAnimals = [{"animal_name":"Jackal, asiatic","population":5,"scientific_name":
 
 /* Request 1: .forEach()
 
-The zoo wants to display both the scientific name and the animal name in front of the habitats.  Return an array with only the animal and scientific names in it.  The individual values in the array should look like this "Name: Jackal, asiatic, Scientific: Canis aureus."
+The zoo wants to display both the scientific name and the animal name in front of the habitats.  Return an array with only the animal and scientific names in it.  
+The individual values in the array should look like this "Name: Jackal, asiatic, Scientific: Canis aureus."
 
 */
-const animalNames = [];
+let animalNames = [];
+zooAnimals.forEach(function(i) {
+  animalNames.push(`Name: ${i.animal_name}, Scientific: ${i.scientific_name}`);
+});
 console.log(animalNames);
 
 /* Request 2: .map()    
 
-The zoos need a list of all their animal's names (names only, not scientific) converted to lower case.  Create a new array named lowerCase and map over each name to convert them all to lower case.  Log the resut.
+The zoos need a list of all their animal's names (names only, not scientific) converted to lower case.  
+Create a new array named lowerCase and map over each name to convert them all to lower case.  Log the resut.
 
 */
-
-const lowerCase = [];
+//const lowerCase = [];
+let lowerCase = zooAnimals.map(i => i.animal_name.toLowerCase());
 console.log(lowerCase); 
 
 /* Request 3: .filter() 
@@ -126,7 +135,8 @@ console.log(lowerCase);
 The zoos are concenred about animals with a lower population count. Find out which animals have a population less than 5.
 
 */
-const lowerPopulation = [];
+//const lowerPopulation = [];
+let lowerPopulation = zooAnimals.filter(i => i.population < 5);
 console.log(lowerPopulation);
 
 /* Request 4: .reduce() 
@@ -134,7 +144,10 @@ console.log(lowerPopulation);
 The zoos need to know their total animal population across the United States.  Find the total population from all the zoos using the .reduce() method.
 
 */
-const populationTotal = 0;
+//const populationTotal = 0;
+let populationTotal = zooAnimals.reduce(function(total, i) {
+  return total + i.population;
+}, 0);
 console.log(populationTotal);
 
 
@@ -143,4 +156,17 @@ console.log(populationTotal);
 Stretch: If you haven't already, convert your array method callbacks into arrow functions.
 
 */
+let animalNames2 = [];
+//zooAnimals.forEach(function(i) {
+//    animalNames.push(`Name: ${i.animal_name}, Scientific: ${i.scientific_name}`);
+//});
+zooAnimals.forEach(i => animalNames2.push(`Name: ${i.animal_name}, Scientific: ${i.scientific_name}`));
+console.log(animalNames2);
+
+
+//let populationTotal = zooAnimals.reduce(function(total, i) {
+//    return total + i.population;
+//}, 0);
+let populationTotal2 = zooAnimals.reduce((total, i) => total + i.population, 0);
+console.log(populationTotal2);
 
